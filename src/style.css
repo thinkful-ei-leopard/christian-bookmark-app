@@ -55,8 +55,9 @@ body, .title {
 }
 
 .description {
-    border-color: black;
+    color: red;
     font-size: 15px;
+    text-align: left;
     width: 200px;
     height: 100px;
     
