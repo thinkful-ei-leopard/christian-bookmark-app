@@ -105,7 +105,6 @@ const addButton = function() {
 };
 //function to render the menu to add new bookmarks
 const generateAddMenuElements = function() {
-
     return `<form id="addNew">
                 <label for="bookmarkTitle">Title:</label>
                 <input type="text" name="title" id="bookmarkTitle" placeholder="Google" required/>

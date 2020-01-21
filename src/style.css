@@ -39,13 +39,14 @@ body, .title {
     background-color: black;
     color: white;
 }
+
 .cancel{
     background-color: black;
     color: white;
 }
 
 .delete {
-    background-color: darkred;
+    background-color: red;
     color: white;
 }
 
