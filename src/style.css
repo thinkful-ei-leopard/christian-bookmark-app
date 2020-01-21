@@ -1,6 +1,7 @@
   
 * {
     box-sizing: border-box;
+    background-color: greenyellow
 
   }
 
@@ -8,7 +9,6 @@
 body, .title {
     text-align: center;
     font-family:'Courier New', fantasy;
-    background-color: beige;
 }
 
 .ratingImg {
@@ -33,6 +33,15 @@ body, .title {
 
 .mainPage {
     font-size: 15px;
+}
+
+.create{
+    background-color: black;
+    color: white;
+}
+.cancel{
+    background-color: black;
+    color: white;
 }
 
 .delete {

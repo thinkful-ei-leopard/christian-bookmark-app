@@ -122,8 +122,8 @@ const generateAddMenuElements = function() {
                 <label for="descriptionBox">Description:</label>
                 <input type="text" name="descriptionBox" id="descriptionBox" placeholder="describe this site"/>
                 
-                <button type="submit">Create</button>
-                <button type="reset" id="cancelButton">Cancel</button>
+                <button class="create" type="submit">Create</button>
+                <button class="cancel" type="reset" id="cancelButton">Cancel</button>
             </form>`;
 };
 
