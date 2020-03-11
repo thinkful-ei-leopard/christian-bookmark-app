@@ -1,19 +1,32 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Bookmark App</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+  <link rel="stylesheet" src="style.css"/>
+  <title>Christian's Bookmarks App</title>
 </head>
-
 <body>
- <header> <h1> My Bookmarks </h1> <button  type="button"> Add Bookmark </button> </header>
-   </main>
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
-  <script src="app.js"></script>
+  <header>
+    <h1>My Bookmarks</h1>
+    <div class="options" id="options">
+      <button class="add-new mainPage">New BookMark</button>
+      <select class="filter mainPage" name="filter">
+        <option value="">Filter by minimum rating</option>
+        <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+      </select>
+    </div>
+  </header>
+  <main>
+      <section id="addMenu"></section>
+      <section id="bookmarkList"></section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script type="module" src="index.js"></script>
 </body>
-
-</html> -->
+</html>
