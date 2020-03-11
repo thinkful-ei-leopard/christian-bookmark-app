@@ -6,6 +6,7 @@ import api from './api';
 
 //function to generate the HTML elements for the bookmark
 const generateBookmarkElement = function(bookmark) {
+    console.log({bookmark})
     console.log('generateBookmarkElement has been ran!');
     if (bookmark.expanded === false) {
         return ` <div class="bookmark ${bookmark.rating}" id="${bookmark.id}">
@@ -28,6 +29,7 @@ const generateBookmarkElement = function(bookmark) {
 //function to put together the bookmark html elements into one block
 const generateBookmarkListString = function(bookmarkArr) {
     console.log('generateBookmarkListString has been run!');
+    console.log({bookmarkArr})
     const list = bookmarkArr.map((item) => generateBookmarkElement(item));
     return list.join('');
 };
@@ -46,10 +48,10 @@ if (currState.adding === true) {
     submitNewBookmark();
     cancelAdding();
 };
-
+console.log({currState})
 const bookmarkListString = generateBookmarkListString(currState.bookmarks);
 $('#bookmarkList').html(bookmarkListString);
-generateExpandedview();
+generateExpandedView();
 deleteButton();
 filterBookmarks();
 
@@ -70,9 +72,9 @@ const filterBookmarks = function() {
 
 
 //event listener to toggle expanded view of bookmark
-const generateExpandedview = function() {
+const generateExpandedView = function() {
     $('.title').click(function () {
-        console.log('generateExpandedview just ran')
+        console.log('generateExpandedView just ran')
         let id = $(this).attr('id');
         console.log(id);
         store.toggleExpand(id);
@@ -109,7 +111,7 @@ const generateAddMenuElements = function() {
                 <label for="bookmarkTitle">Title:</label>
                 <input type="text" name="title" id="bookmarkTitle" placeholder="Google" required/>
                 <label for="bookmarkURL">URL: </label>
-                <input type="text" name="url" id="bookmarkURL" placeholder="https://www.google.com" required/>
+                <input type="text" name="url" id="bookmarkURL" placeholder="www.google.com" required/>
                 <label for="ratingTool">Rating:</label>
                 <select class="ratingTool" name="ratingTool" id="ratingTool">
                     <option value="5">5</option>
@@ -142,11 +144,11 @@ const submitNewBookmark = function() {
         .then(() => {store.addBookmark(newBookmark);})
         .then(() => {render();})
         .then(response => response.json())  
-        // .catch(err => {
-        //     console.log('catch block running');
-        //     $('#addNew').append(`<p>Invalid entry: Title and URl required (include https://)</p>`);
-        //     });
-    })
+        .catch(err => {
+            console.log('catch block running');
+            $('#addNew').append(`<p>Invalid entry: Title and URl required (include https://)</p>`);
+            });
+    });
 };
 
 //event listener for the cancel button
@@ -170,6 +172,6 @@ export default {
     render,
     generateBookmarkElement,
     generateAddMenuElements,
-    generateExpandedview,
+    generateExpandedView,
     eventListeners
 };

@@ -33,6 +33,7 @@ const toggleError = function() {
 //function to toggle expanded view of a bookmark 
 const toggleExpand = function(id) {
   let bmArray = state.bookmarks;
+  console.log({id})
   let targetBm = bmArray.find((bm) => (bm.id === id));
   targetBm.expanded = !targetBm.expanded;
 };
