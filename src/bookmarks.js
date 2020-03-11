@@ -141,12 +141,11 @@ const submitNewBookmark = function() {
         newBookmark.rating = $('#ratingTool').val();
 
         api.createBookmark(newBookmark)    
-        .then(() => {store.addBookmark(newBookmark);})
-        .then(() => {render();})
-        .then(response => response.json())  
-        .catch(err => {
-            console.log('catch block running');
-            $('#addNew').append(`<p>Invalid entry: Title and URl required (include https://)</p>`);
+            .then((res) => res.json())
+            .then(data => store.addBookmark(data) )
+            .then(() => render())
+            .catch(err => {
+                $('#addNew').append(`<p>Invalid entry: Title and URl required (include https://)</p>`);
             });
     });
 };

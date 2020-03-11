@@ -13,24 +13,14 @@ const getBookmark = function() {
 
 //create bookmark api
 const createBookmark = function (bookmark) {
-    console.log('createBookmark has been run!');
     let newBookmarkJSON = JSON.stringify(bookmark);
-
         return fetch(`${BASE_URL}`, {
-
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: newBookmarkJSON
         })
-        .then(() => 
-        getBookmark().then((data) => 
-        data.json()
-        ) 
-        .then((data) => state.bookmark = data
-            )
-        )   
     };
 
 
