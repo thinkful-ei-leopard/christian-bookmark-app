@@ -111,7 +111,7 @@ const generateAddMenuElements = function() {
                 <label for="bookmarkTitle">Title:</label>
                 <input type="text" name="title" id="bookmarkTitle" placeholder="Google" required/>
                 <label for="bookmarkURL">URL: </label>
-                <input type="text" name="url" id="bookmarkURL" placeholder="www.google.com" required/>
+                <input type="text" name="url" id="bookmarkURL" placeholder="https://www.google.com" required/>
                 <label for="ratingTool">Rating:</label>
                 <select class="ratingTool" name="ratingTool" id="ratingTool">
                     <option value="5">5</option>
