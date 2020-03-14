@@ -11,7 +11,7 @@ const generateBookmarkElement = function(bookmark) {
     if (bookmark.expanded === false) {
         return ` <div class="bookmark ${bookmark.rating}" id="${bookmark.id}">
                     <button class ="title" id="${bookmark.id}">${bookmark.title}</button>
-                    ${bookmark.rating} <img src="/src/starRating.png" alt="small icon of a star" class="ratingImg">
+                    ${bookmark.rating} <img src="src/starRating.png" alt="small icon of a star" class="ratingImg">
                     <button class="delete" id="${bookmark.id}">Delete</button>
                     </div>`
     }
@@ -19,7 +19,7 @@ const generateBookmarkElement = function(bookmark) {
     return ` <div class="bookmark ${bookmark.rating}" id="${bookmark.id}">
                 <button class ="title" id="${bookmark.id}">${bookmark.title}</button>
                 <a href="${bookmark.url}"> Visit</a>
-                ${bookmark.rating} <img src="/src/starRating.png" alt="small icon of a star" class="ratingImg"/>
+                ${bookmark.rating} <img src="src/starRating.png" alt="small icon of a star" class="ratingImg"/>
                 <p class="description">${bookmark.desc}</p>
                 <button class="delete" id="${bookmark.id}">Delete</button>
             </div>`
