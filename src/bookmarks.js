@@ -63,11 +63,12 @@ filterBookmarks();
 const filterBookmarks = function() {
     $('.filter').change(function() {
         let filterNum = $('.filter').val();
-        console.log(filterNum);  
-        for (let i = 1; i<filterNum; i++){
-        $(`.${i}`).addClass('hidden'); 
-        }}
-    )
+        const filtered = store.state.bookmarks.filter(bookmark => {
+            return bookmark.rating >= filterNum
+        }) 
+        const bookmarkListString = generateBookmarkListString(filtered);
+        $('#bookmarkList').html(bookmarkListString);
+    })
 };
 
 
@@ -164,6 +165,7 @@ const cancelAdding = function() {
 
 const eventListeners = function() {
     addButton();
+    filterBookmarks();
 
 };
 
