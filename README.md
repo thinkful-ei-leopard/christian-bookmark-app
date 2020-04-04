@@ -1,6 +1,6 @@
 Bookmark App
 
-gh-pages link: 
+gh-pages link: https://thinkful-ei-leopard.github.io/christian-bookmark-app/
 
 As a user:
 I can add bookmarks to my bookmark list. Bookmarks contain:
