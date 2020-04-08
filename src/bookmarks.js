@@ -6,8 +6,8 @@ import api from './api';
 
 //function to generate the HTML elements for the bookmark
 const generateBookmarkElement = function(bookmark) {
-    console.log({bookmark})
-    console.log('generateBookmarkElement has been ran!');
+    // // console.log({bookmark})
+    // // console.log('generateBookmarkElement has been ran!');
     if (bookmark.expanded === false) {
         return ` <div class="bookmark ${bookmark.rating}" id="${bookmark.id}">
                     <button class ="title" id="${bookmark.id}">${bookmark.title}</button>
@@ -28,8 +28,8 @@ const generateBookmarkElement = function(bookmark) {
 
 //function to put together the bookmark html elements into one block
 const generateBookmarkListString = function(bookmarkArr) {
-    console.log('generateBookmarkListString has been run!');
-    console.log({bookmarkArr})
+    // // console.log('generateBookmarkListString has been run!');
+    // // console.log({bookmarkArr})
     const list = bookmarkArr.map((item) => generateBookmarkElement(item));
     return list.join('');
 };
@@ -37,9 +37,9 @@ const generateBookmarkListString = function(bookmarkArr) {
 
 
 //function to render store 
-const render = function() {
+const render = function(data = store.state.bookmarks) {
 
-console.log('render has been run!');
+// console.log('render has been run!');
 
 let currState = store.state;
 if (currState.adding === true) {
@@ -48,10 +48,11 @@ if (currState.adding === true) {
     submitNewBookmark();
     cancelAdding();
 };
-console.log({currState})
-const bookmarkListString = generateBookmarkListString(currState.bookmarks);
+// // console.log({currState})
+// const bookmarkListString = generateBookmarkListString(currState.bookmarks);
+const bookmarkListString = generateBookmarkListString(data);
 $('#bookmarkList').html(bookmarkListString);
-generateExpandedView();
+generateExpandedView(data);
 deleteButton();
 filterBookmarks();
 
@@ -68,18 +69,19 @@ const filterBookmarks = function() {
         }) 
         const bookmarkListString = generateBookmarkListString(filtered);
         $('#bookmarkList').html(bookmarkListString);
+        generateExpandedView(filtered);
     })
 };
 
 
 //event listener to toggle expanded view of bookmark
-const generateExpandedView = function() {
+const generateExpandedView = function(data) {
     $('.title').click(function () {
-        console.log('generateExpandedView just ran')
+        // console.log('generateExpandedView just ran')
         let id = $(this).attr('id');
-        console.log(id);
+        // console.log(id);
         store.toggleExpand(id);
-        render();
+        render(data);
     })
 
 };
@@ -88,9 +90,9 @@ const generateExpandedView = function() {
 
 const deleteButton = function() {
     $('.delete').on('click', function() {
-        console.log('delete function ran');
+        // console.log('delete function ran');
         let id = $(this).attr('id');
-        console.log(id);
+        // console.log(id);
         api.deleteBookmark(id);
         store.deleteBookmark(id);
         render();
@@ -112,7 +114,7 @@ const generateAddMenuElements = function() {
                 <label for="bookmarkTitle">Title:</label>
                 <input type="text" name="title" id="bookmarkTitle" placeholder="Google" required/>
                 <label for="bookmarkURL">URL: </label>
-                <input type="text" name="url" id="bookmarkURL" placeholder="https://www.google.com" required/>
+                <input type="url" name="url" id="bookmarkURL" placeholder="https://www.google.com" required/>
                 <label for="ratingTool">Rating:</label>
                 <select class="ratingTool" name="ratingTool" id="ratingTool">
                     <option value="5">5</option>
@@ -131,8 +133,9 @@ const generateAddMenuElements = function() {
 
 //event listener to submit new bookmark
 const submitNewBookmark = function() {
-    console.log('submitNewBookmark ran!');
+    // console.log('submitNewBookmark ran!');
     $('#addNew').submit(function (event) {
+        
         event.preventDefault();
         const newBookmark = {};
 
@@ -146,7 +149,7 @@ const submitNewBookmark = function() {
             .then(data => store.addBookmark(data) )
             .then(() => render())
             .catch(err => {
-                $('#addNew').append(`<p>Invalid entry: Title and URl required (include https://)</p>`);
+                $('#addNew').validate(`<p>Invalid entry: Title and URl required (include https://)</p>`);
             });
     });
 };
